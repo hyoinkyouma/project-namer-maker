@@ -1,0 +1,15 @@
+{
+  "name": "project-maker",
+  "version": "1.0.0",
+  "description": "Makes my projects and names them",
+  "main": "./src/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^18.2.4",
+    "electron-builder": "^23.0.3"
+  }
+}
