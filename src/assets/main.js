@@ -9,12 +9,15 @@ const make = async () => {
     makeBtn.removeAttribute("disabled");
   };
 };
+const definedir = async () => {
+  await window.default.defDir((e, d) => {
+    document.getElementById("directoryInput").value = d;
+  });
+};
 
 const app = async () => {
   make();
-  window.browse.defDir(async (e, dir) => {
-    document.getElementById("directoryInput").value = await dir;
-  });
+  await definedir();
 
   const makeNameBtn = document.getElementById("makeName");
   makeNameBtn.onclick = async () => {
@@ -31,6 +34,7 @@ const app = async () => {
   };
 
   const browseBtn = document.getElementById("browseDir");
+
   browseBtn.onclick = async () => {
     browseBtn.setAttribute("disabled", "true");
 
@@ -62,9 +66,10 @@ const app = async () => {
     });
 
     await new Promise((r) => setTimeout(r, 200));
-
     browseBtn.removeAttribute("disabled");
   };
+
+  makeNameBtn.click();
 };
 
 app();

@@ -15,11 +15,7 @@
     "electron-builder": "^23.0.3"
   },
   "build": {
-    "name": "Project Maker",
     "productName": "Project Maker",
-    "asarUnpack": "nameshistory.json",
-    "win": {
-      "target": "msi"
-    }
+    "asarUnpack": "nameshistory.json"
   }
 }

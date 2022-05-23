@@ -3,9 +3,10 @@ const url = require("url");
 const path = require("path");
 const fs = require("fs");
 const { getNewProjName } = require("./namegen/getNewProjName");
+const { homedir } = require("os");
 let mainWindow;
 
-process.env.NODE_ENV = "dev";
+process.env.NODE_ENV = "dec";
 
 const makeName = async (e, length) => {
   let name;
@@ -25,7 +26,7 @@ const makeProj = (e, dir, name) => {
 const openFileBrowser = async () => {
   await dialog
     .showOpenDialog({
-      defaultPath: path.join(__dirname, "/../"),
+      defaultPath: path.join(require("os").homedir(), "Desktop"),
       properties: ["openDirectory"],
     })
     .then((paths) => (dir = paths))
@@ -57,7 +58,13 @@ app.on("ready", function () {
       slashes: true,
     })
   );
-  mainWindow.webContents.send("defdir", path.join(__dirname, "/../"));
+
+  mainWindow.on("ready-to-show", async () => {
+    await mainWindow.webContents.send(
+      "defdir",
+      require("os").homedir() + "\\" + "Desktop"
+    );
+  });
 
   mainWindow.on("closed", () => app.quit());
 
