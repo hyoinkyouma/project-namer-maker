@@ -4,12 +4,22 @@
   "description": "Makes my projects and names them",
   "main": "./src/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "app:dir": "electron-builder --dir",
+    "app:dist": "electron-builder"
   },
   "author": "",
   "license": "MIT",
   "devDependencies": {
     "electron": "^18.2.4",
     "electron-builder": "^23.0.3"
+  },
+  "build": {
+    "name": "Project Maker",
+    "productName": "Project Maker",
+    "asarUnpack": "nameshistory.json",
+    "win": {
+      "target": "msi"
+    }
   }
 }

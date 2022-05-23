@@ -2,10 +2,13 @@ const { makeProjectName } = require("./project-name");
 const fs = require("fs");
 const path = require("path");
 
-const getNewProjName = (length) => {
-  let name = makeProjectName(length);
-  const nameDB = JSON.parse(
-    fs.readFileSync(path.join(__dirname, "nameshistory.json"), "utf-8")
+const getNewProjName = async (length) => {
+  let name = await makeProjectName(length);
+  const nameDB = await JSON.parse(
+    fs.readFileSync(
+      path.join(__dirname, "/../", "/../", "nameshistory.json"),
+      "utf-8"
+    )
   );
   const activeNames = nameDB.Active;
   activeNames.forEach((element) => {
@@ -14,20 +17,18 @@ const getNewProjName = (length) => {
     }
   });
 
-  activeNames.push(name);
-  nameDB.Active = activeNames;
-  console.log("Current:" + nameDB.Active.length);
-
-  if (name != null)
-    fs.writeFile(
-      path.join(__dirname, "./nameshistory.json"),
-      JSON.stringify(nameDB),
-      (err) => {
-        if (err) throw err;
-        console.log("wrote to ./nameshistory.json");
-      }
+  if (name !== null || name !== undefined || name !== " " || name === {}) {
+    activeNames.push(name);
+    nameDB.Active = activeNames;
+    console.log("Current:" + nameDB.Active.length);
+    fs.writeFileSync(
+      path.join(__dirname, "/../", "/../", "nameshistory.json"),
+      JSON.stringify(nameDB)
     );
-  return name;
+    console.log("wrote to ./nameshistory.json");
+  }
+
+  return await name;
 };
 
 const test = async () => {
@@ -43,6 +44,4 @@ const test = async () => {
   }
 };
 
-test();
-
-module.exports = { test, getNewProjName };
+module.exports = { getNewProjName };

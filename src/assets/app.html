@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project Maker</title>
+    <link href="./materialize.css" rel="stylesheet" />
+  </head>
+  <body>
+    <nav class="blue darken-4">
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo center-align center">Project Maker</a>
+      </div>
+    </nav>
+    <div
+      class="valign-wrapper"
+      style="width: 100%; height: 80%; position: absolute"
+    >
+      <div class="valign" style="width: 100%">
+        <div class="container">
+          <div class="row">
+            <div class="col 16 s12 center">
+              <h3 class="center-align">What are you going to make today?</h3>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12 center">
+              <div class="input-field col s8 offset-s2">
+                <input id="project-name" type="text" class="validate" />
+                <label for="project-name">project-name</label>
+                <div class="col s2 center">
+                  <button
+                    id="makeName"
+                    class="btn hoverable indigo center"
+                    style="
+                      position: absolute;
+                      right: 5%;
+                      bottom: 30%;
+                      border-radius: 20px;
+                      width: 25%;
+                    "
+                  >
+                    Generate
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12 center">
+              <div class="input-field col s8 center offset-s2">
+                <input id="directoryInput" type="text" class="validate" />
+                <label for="directoryInput">Directory</label>
+                <div class="col s2 center">
+                  <button
+                    id="browseDir"
+                    class="btn hoverable indigo center"
+                    style="
+                      position: absolute;
+                      right: 5%;
+                      bottom: 30%;
+                      border-radius: 20px;
+                      width: 25%;
+                    "
+                  >
+                    Browse
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col 16 s12 center">
+                <button id="makeBtn" class="btn hoverable indigo center">
+                  Make a Project
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script type="text/javascript" src="materialize.js"></script>
+      <script src="main.js"></script>
+    </div>
+  </body>
+</html>
