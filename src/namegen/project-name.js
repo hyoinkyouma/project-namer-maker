@@ -25,7 +25,7 @@ const makeProjectName = async (length) => {
   let name = formatName(getFantasyTerm(), getWrestlingTerm());
 
   if (minLength > length) return;
-
+  if (name === undefined || name === null || name === "" || name === {}) return;
   if (name.length != length) {
     name = await makeProjectName(length);
   }

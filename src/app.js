@@ -1,12 +1,11 @@
-const { app, BrowserWindow, ipcMain, dialog } = require("electron");
+const { app, BrowserWindow, ipcMain, dialog, shell } = require("electron");
 const url = require("url");
 const path = require("path");
 const fs = require("fs");
 const { getNewProjName } = require("./namegen/getNewProjName");
-const { homedir } = require("os");
 let mainWindow;
 
-process.env.NODE_ENV = "dec";
+process.env.NODE_ENV = "production";
 
 const makeName = async (e, length) => {
   let name;
@@ -20,6 +19,7 @@ const makeProj = (e, dir, name) => {
   if (dir != null || dir != undefined) {
     fs.mkdirSync(dir + "/" + name + "/" + "src", { recursive: true });
     fs.writeFileSync(path.join(dir, name, "src", "app.js"), "//Happy Coding");
+    shell.showItemInFolder(path.join(dir, name, "src", "app.js"));
   }
 };
 
